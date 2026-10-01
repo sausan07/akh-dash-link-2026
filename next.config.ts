@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Pastikan output berjalan dengan baik di Vercel
-  output: "standalone",
+  // Jangan set output:"standalone" untuk Vercel — Vercel mengelola sendiri
 };
 
 export default nextConfig;

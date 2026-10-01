@@ -13,8 +13,8 @@ export default function DokumentasiPage() {
     autoRefreshInterval: 60000,
   });
 
-  // Documentation items: only links in "Dokumentasi" category with valid URL
-  const docLinks = allLinks.filter((l) => l.kategori === "Dokumentasi");
+  // Documentation items: hanya link dengan halaman === "Dokumentasi"
+  const docLinks = allLinks.filter((l) => l.halaman === "Dokumentasi");
 
   const docItems: DocumentationItem[] = docLinks.map((l) => ({
     namaKegiatan: l.namaLink,
@@ -36,14 +36,6 @@ export default function DokumentasiPage() {
             Galeri dokumentasi berbagai kegiatan mahasiswi
           </p>
         </div>
-      </div>
-
-      <div className="bg-[#243B68]/5 border border-[#243B68]/10 rounded-2xl p-4 text-sm text-gray-600">
-        <p className="font-semibold text-gray-700 mb-1">📌 Informasi</p>
-        <p>
-          Dokumentasi hanya ditampilkan jika tautan sudah tersedia. Kegiatan yang belum
-          memiliki tautan dokumentasi tidak akan muncul di halaman ini.
-        </p>
       </div>
 
       <RefreshBar lastUpdated={lastUpdated} isLoading={isLoading} onRefresh={refresh} />

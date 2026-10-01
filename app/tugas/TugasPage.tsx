@@ -25,12 +25,36 @@ export default function TugasPage() {
     if (k) setActiveCategory(k);
   }, [searchParams]);
 
-  const { links, categories, isLoading, error, lastUpdated, refresh } = useLinks({
-    query: searchQuery,
-    kategori: activeCategory,
-    sortBy,
+  const { allLinks, isLoading, error, lastUpdated, refresh } = useLinks({
     autoRefreshInterval: 60000,
   });
+
+  // Hanya link dengan halaman === "Tugas"
+  const tugasLinks = allLinks.filter((l) => l.halaman === "Tugas");
+
+  // Sub-kategori yang ada di data Tugas
+  const tugasCategories = [...new Set(tugasLinks.map((l) => l.kategori))].filter(Boolean);
+
+  const filteredLinks = tugasLinks
+    .filter((l) => {
+      if (activeCategory) return l.kategori === activeCategory;
+      return true;
+    })
+    .filter(
+      (l) =>
+        !searchQuery ||
+        l.namaLink.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        l.deskripsi.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortBy === "tenggat") {
+        if (!a.tenggat && !b.tenggat) return a.urutan - b.urutan;
+        if (!a.tenggat) return 1;
+        if (!b.tenggat) return -1;
+        return new Date(a.tenggat).getTime() - new Date(b.tenggat).getTime();
+      }
+      return a.urutan - b.urutan;
+    });
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
@@ -39,9 +63,9 @@ export default function TugasPage() {
           <BookOpen className="w-5 h-5 text-white" aria-hidden="true" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-800">Tugas &amp; Administrasi</h1>
+          <h1 className="text-xl font-bold text-gray-800">Tugas</h1>
           <p className="text-gray-500 text-sm">
-            Semua tautan tugas, formulir, dan administrasi
+            Tugas harian, mingguan, bulanan, dan periode tertentu
           </p>
         </div>
       </div>
@@ -49,11 +73,11 @@ export default function TugasPage() {
       <SearchBar
         value={searchQuery}
         onChange={setSearchQuery}
-        placeholder="Cari tautan tugas..."
+        placeholder="Cari tugas..."
       />
 
       <FilterBar
-        categories={categories}
+        categories={tugasCategories}
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
         sortBy={sortBy}
@@ -65,7 +89,7 @@ export default function TugasPage() {
       {!isLoading && !error && (
         <p className="text-sm text-gray-500">
           Menampilkan{" "}
-          <span className="font-medium text-gray-700">{links.length}</span> tautan
+          <span className="font-medium text-gray-700">{filteredLinks.length}</span> tugas
           {activeCategory && (
             <>
               {" "}di kategori{" "}
@@ -86,20 +110,20 @@ export default function TugasPage() {
         <LoadingSkeletonGrid />
       ) : error ? (
         <ErrorState message={error} onRetry={refresh} />
-      ) : links.length === 0 ? (
+      ) : filteredLinks.length === 0 ? (
         <EmptyState
-          title={searchQuery ? "Tidak ada hasil pencarian" : "Belum ada tautan"}
+          title={searchQuery ? "Tidak ada hasil pencarian" : "Belum ada tugas"}
           description={
             searchQuery
-              ? `Tidak ada tautan yang cocok dengan "${searchQuery}".`
+              ? `Tidak ada tugas yang cocok dengan "${searchQuery}".`
               : activeCategory
-              ? `Belum ada tautan aktif di kategori "${activeCategory}".`
-              : "Belum ada tautan yang tersedia. Pastikan Google Sheets API sudah dikonfigurasi."
+              ? `Belum ada tugas aktif di kategori "${activeCategory}".`
+              : "Belum ada tugas yang tersedia."
           }
         />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {links.map((link) => (
+          {filteredLinks.map((link) => (
             <LinkCard key={link.id} link={link} />
           ))}
         </div>

@@ -13,6 +13,22 @@ import {
   Pin,
 } from "lucide-react";
 
+// Kategori yang termasuk "Tugas" (pengerjaan / penyerahan tugas akademik)
+export const TUGAS_CATEGORIES = [
+  "Harian",
+  "Bulanan",
+  "Tugas Mingguan",
+] as const;
+
+// Kategori yang termasuk "Administrasi" (perizinan, survei, laporan, pengumpulan konten)
+export const ADMIN_CATEGORIES = [
+  "Perizinan",
+  "Pascakegiatan",
+  "Medium & Vlog Inggris",
+  "Periode Tertentu",
+  "Opsional",
+] as const;
+
 export function getDeadlineStatus(tenggat: string): DeadlineStatus {
   if (!tenggat || tenggat.trim() === "") return "none";
 
@@ -62,15 +78,15 @@ interface CategoryMeta {
 }
 
 const CATEGORY_META: Record<string, CategoryMeta> = {
-  Harian:                    { icon: CalendarDays,  color: "text-blue-600",   bg: "bg-blue-50" },
-  Bulanan:                   { icon: CalendarRange,  color: "text-indigo-600", bg: "bg-indigo-50" },
-  Opsional:                  { icon: Star,           color: "text-amber-500",  bg: "bg-amber-50" },
-  Perizinan:                 { icon: ShieldCheck,    color: "text-green-600",  bg: "bg-green-50" },
-  "Periode Tertentu":        { icon: Clock,          color: "text-orange-500", bg: "bg-orange-50" },
-  Pascakegiatan:             { icon: CheckCircle2,   color: "text-teal-600",   bg: "bg-teal-50" },
-  "Medium & Bahasa Inggris":  { icon: PenLine,        color: "text-violet-600", bg: "bg-violet-50" },
-  "Tugas Mingguan":          { icon: BookOpen,       color: "text-[#243B68]",  bg: "bg-[#243B68]/8" },
-  Dokumentasi:               { icon: Camera,         color: "text-rose-500",   bg: "bg-rose-50" },
+  Harian:                   { icon: CalendarDays,  color: "text-blue-600",   bg: "bg-blue-50" },
+  Bulanan:                  { icon: CalendarRange,  color: "text-indigo-600", bg: "bg-indigo-50" },
+  Opsional:                 { icon: Star,           color: "text-amber-500",  bg: "bg-amber-50" },
+  Perizinan:                { icon: ShieldCheck,    color: "text-green-600",  bg: "bg-green-50" },
+  "Periode Tertentu":       { icon: Clock,          color: "text-orange-500", bg: "bg-orange-50" },
+  Pascakegiatan:            { icon: CheckCircle2,   color: "text-teal-600",   bg: "bg-teal-50" },
+  "Medium & Vlog Inggris":  { icon: PenLine,        color: "text-violet-600", bg: "bg-violet-50" },
+  "Tugas Mingguan":         { icon: BookOpen,       color: "text-[#243B68]",  bg: "bg-[#243B68]/8" },
+  Dokumentasi:              { icon: Camera,         color: "text-rose-500",   bg: "bg-rose-50" },
 };
 
 const DEFAULT_META: CategoryMeta = { icon: Pin, color: "text-gray-500", bg: "bg-gray-100" };
@@ -83,11 +99,11 @@ export function getCategoryDescription(category: string): string {
   const map: Record<string, string> = {
     Harian: "Tugas dan kegiatan rutin setiap hari",
     Bulanan: "Laporan dan tugas bulanan",
-    Opsional: "Tugas pilihan tambahan",
+    Opsional: "Laporan, pengaduan, dan formulir pilihan lainnya",
     Perizinan: "Formulir perizinan dan administrasi",
-    "Periode Tertentu": "Tugas untuk periode waktu khusus",
+    "Periode Tertentu": "Survei dan formulir untuk periode waktu tertentu",
     Pascakegiatan: "Laporan dan dokumentasi setelah kegiatan",
-    "Medium & Bahasa Inggris": "Pengumpulan medium dan tugas bahasa Inggris",
+    "Medium & Vlog Inggris": "Pengumpulan medium dan tugas Vlog Inggris",
     "Tugas Mingguan": "Tugas rutin setiap minggu",
     Dokumentasi: "Galeri dokumentasi kegiatan",
   };

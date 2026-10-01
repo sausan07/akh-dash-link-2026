@@ -10,6 +10,7 @@ export type LinkJenis =
 
 export interface LinkItem {
   id: string;
+  halaman: string;
   kategori: string;
   namaLink: string;
   deskripsi: string;
