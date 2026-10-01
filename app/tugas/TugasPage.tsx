@@ -86,26 +86,6 @@ export default function TugasPage() {
 
       <RefreshBar lastUpdated={lastUpdated} isLoading={isLoading} onRefresh={refresh} />
 
-      {!isLoading && !error && (
-        <p className="text-sm text-gray-500">
-          Menampilkan{" "}
-          <span className="font-medium text-gray-700">{filteredLinks.length}</span> tugas
-          {activeCategory && (
-            <>
-              {" "}di kategori{" "}
-              <span className="font-medium text-[#243B68]">{activeCategory}</span>
-            </>
-          )}
-          {searchQuery && (
-            <>
-              {" "}untuk &ldquo;
-              <span className="font-medium text-[#243B68]">{searchQuery}</span>
-              &rdquo;
-            </>
-          )}
-        </p>
-      )}
-
       {isLoading ? (
         <LoadingSkeletonGrid />
       ) : error ? (

@@ -40,13 +40,6 @@ export default function DokumentasiPage() {
 
       <RefreshBar lastUpdated={lastUpdated} isLoading={isLoading} onRefresh={refresh} />
 
-      {!isLoading && !error && (
-        <p className="text-sm text-gray-500">
-          Menampilkan{" "}
-          <span className="font-medium text-gray-700">{docItems.length}</span> dokumentasi kegiatan
-        </p>
-      )}
-
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-pulse">
           {[0, 1, 2, 3, 4, 5].map((i) => (

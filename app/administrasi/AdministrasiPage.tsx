@@ -87,20 +87,6 @@ export default function AdministrasiPage() {
 
       <RefreshBar lastUpdated={lastUpdated} isLoading={isLoading} onRefresh={refresh} />
 
-      {!isLoading && !error && (
-        <p className="text-sm text-gray-500">
-          Menampilkan{" "}
-          <span className="font-medium text-gray-700">{filteredLinks.length}</span>{" "}
-          tautan administrasi
-          {activeCategory && (
-            <>
-              {" "}di kategori{" "}
-              <span className="font-medium text-[#243B68]">{activeCategory}</span>
-            </>
-          )}
-        </p>
-      )}
-
       {isLoading ? (
         <LoadingSkeletonGrid />
       ) : error ? (
