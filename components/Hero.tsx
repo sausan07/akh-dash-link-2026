@@ -121,6 +121,15 @@ export default function Hero({
               <GraduationCap className="w-4 h-4" aria-hidden="true" />
               SIAKAD
             </a>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdcMfavGgVZ5SwOwjo3jRBSquUbxCEcEdxU-zDNnNgjbKZ3vw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+            >
+              <ClipboardList className="w-4 h-4" aria-hidden="true" />
+              Izin Tidak Masuk
+            </a>
           </div>
         )}
       </div>
