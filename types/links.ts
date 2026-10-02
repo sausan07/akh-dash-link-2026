@@ -6,6 +6,7 @@ export type LinkJenis =
   | "Google Spreadsheet"
   | "SeaTable"
   | "Website"
+  | "Excel Microsoft"
   | string;
 
 export interface LinkItem {

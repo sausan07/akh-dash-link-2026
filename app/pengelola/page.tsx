@@ -84,7 +84,7 @@ export default function PengelolaPage() {
             ["Nama Link", "Nama deskriptif tautan"],
             ["Deskripsi", "Penjelasan singkat isi tautan"],
             ["URL", "Alamat lengkap mulai dengan http:// atau https://"],
-            ["Jenis", "Tipe tautan: Google Form, Google Drive, Google Spreadsheet, SeaTable, Website"],
+            ["Jenis", "Tipe tautan: Google Form, Google Drive, Google Spreadsheet, SeaTable, Website, Excel Microsoft"],
             ["Tenggat", "Format tanggal: YYYY-MM-DD (contoh: 2025-12-31)"],
             ["Status", "Isi dengan: Aktif, Arsip, atau Perlu Link"],
             ["Urutan", "Angka urutan tampil (semakin kecil tampil lebih dahulu)"],

@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import LinkCard from "./LinkCard";
 import Link from "next/link";
 import type { LinkItem } from "@/types/links";
-import { FileText, ClipboardList, Camera, TableProperties, Monitor, GraduationCap } from "lucide-react";
+import { FileText, ClipboardList, Camera, TableProperties, Monitor, GraduationCap, BookOpenCheck } from "lucide-react";
 import { LoadingSkeletonGrid } from "./LoadingSkeleton";
 
 interface HeroProps {
@@ -72,64 +72,79 @@ export default function Hero({
 
         {/* Nav links — hanya tampil saat tidak search */}
         {!isSearching && (
-          <div className="flex flex-wrap justify-center gap-3 mt-6 text-sm">
-            <Link
-              href="/tugas"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <FileText className="w-4 h-4" aria-hidden="true" />
-              Tugas
-            </Link>
-            <Link
-              href="/administrasi"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <ClipboardList className="w-4 h-4" aria-hidden="true" />
-              Administrasi
-            </Link>
-            <Link
-              href="/dokumentasi"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <Camera className="w-4 h-4" aria-hidden="true" />
-              Dokumentasi
-            </Link>
-            <a
-              href="https://docs.google.com/spreadsheets/d/1ClEJb1LzGlFlwBVGP6mSrR0igNh2qdpiczxOCGrQwTQ/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <TableProperties className="w-4 h-4" aria-hidden="true" />
-              Kalender Akademik
-            </a>
-            <a
-              href="https://lms.politeknikidn.id/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <Monitor className="w-4 h-4" aria-hidden="true" />
-              LMS
-            </a>
-            <a
-              href="https://mhs.idn.siakad.tech/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <GraduationCap className="w-4 h-4" aria-hidden="true" />
-              SIAKAD
-            </a>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdcMfavGgVZ5SwOwjo3jRBSquUbxCEcEdxU-zDNnNgjbKZ3vw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
-            >
-              <ClipboardList className="w-4 h-4" aria-hidden="true" />
-              Izin Tidak Masuk
-            </a>
+          <div className="flex flex-col items-center gap-2 mt-6 text-sm">
+            {/* Baris 1 */}
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/tugas"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <FileText className="w-4 h-4" aria-hidden="true" />
+                Tugas
+              </Link>
+              <Link
+                href="/administrasi"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <ClipboardList className="w-4 h-4" aria-hidden="true" />
+                Administrasi
+              </Link>
+              <Link
+                href="/dokumentasi"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <Camera className="w-4 h-4" aria-hidden="true" />
+                Dokumentasi
+              </Link>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1ClEJb1LzGlFlwBVGP6mSrR0igNh2qdpiczxOCGrQwTQ/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <TableProperties className="w-4 h-4" aria-hidden="true" />
+                Kalender Akademik
+              </a>
+              <a
+                href="https://1drv.ms/x/c/967722343a0abe85/IQC57M34eMdTR6XFsYvtjBixAY7rZweupW6Doopiu-ayH88?e=PFhVu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <BookOpenCheck className="w-4 h-4" aria-hidden="true" />
+                Mutabaah Tahfidz &amp; Diniyyah
+              </a>
+            </div>
+            {/* Baris 2 */}
+            <div className="flex flex-wrap justify-center gap-3">
+              <a
+                href="https://lms.politeknikidn.id/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <Monitor className="w-4 h-4" aria-hidden="true" />
+                LMS
+              </a>
+              <a
+                href="https://mhs.idn.siakad.tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <GraduationCap className="w-4 h-4" aria-hidden="true" />
+                SIAKAD
+              </a>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdcMfavGgVZ5SwOwjo3jRBSquUbxCEcEdxU-zDNnNgjbKZ3vw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+              >
+                <ClipboardList className="w-4 h-4" aria-hidden="true" />
+                Izin Tidak Masuk
+              </a>
+            </div>
           </div>
         )}
       </div>

@@ -117,6 +117,7 @@ export function getJenisColor(jenis: string): string {
     "Google Spreadsheet": "bg-green-50 text-green-700 border-green-200",
     SeaTable: "bg-purple-50 text-purple-700 border-purple-200",
     Website: "bg-gray-50 text-gray-700 border-gray-200",
+    "Excel Microsoft": "bg-emerald-50 text-emerald-700 border-emerald-300",
   };
   return map[jenis] ?? "bg-slate-50 text-slate-700 border-slate-200";
 }
